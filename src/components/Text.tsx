@@ -17,7 +17,7 @@ type TextProps<T extends React.ElementType> = {
  * - Create a reusable
  * - ...
  */
-export const Text = <T extends React.ElementType>({ as, children, ...props }: TextProps<T>) => {
+export const Text = <T extends React.ElementType = 'span'>({ as, children, ...props }: TextProps<T>) => {
   const Component = as || 'span'
   return <Component {...props}>{children}</Component>
 }

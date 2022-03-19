@@ -20,6 +20,8 @@ function App() {
         <Text as="a" href="/">
           Go home
         </Text>
+        {/* this is prevented now
+        <Text href="/">Span with href</Text> */}
       </header>
     </div>
   )
