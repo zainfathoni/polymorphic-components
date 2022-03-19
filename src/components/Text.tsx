@@ -11,6 +11,12 @@ type PolymorphicComponentProps<T extends React.ElementType, ComponentProps> = Re
   ComponentProps & AsProps<T>
 > &
   Omit<React.ComponentPropsWithoutRef<T>, PropsToOmit<T, ComponentProps>>
+type Props<T extends React.ElementType> = PolymorphicComponentProps<
+  T,
+  {
+    color?: Rainbow | 'white'
+  }
+>
 
 /**
  * <Text as="div">Hello, world!</Text>
@@ -24,17 +30,7 @@ type PolymorphicComponentProps<T extends React.ElementType, ComponentProps> = Re
  * - ~Create a reusable utility for Polymorphic types~
  * - The component should support refs
  */
-export const Text = <T extends React.ElementType = 'span'>({
-  as,
-  color,
-  children,
-  ...props
-}: PolymorphicComponentProps<
-  T,
-  {
-    color?: Rainbow | 'white'
-  }
->) => {
+export const Text = <T extends React.ElementType = 'span'>({ as, color, children, ...props }: Props<T>) => {
   const Component = as || 'span'
   const inlineStyle = color ? { style: { color } } : {}
   return (
