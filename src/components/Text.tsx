@@ -7,7 +7,7 @@ type TextProps<T extends React.ElementType> = {
   color?: Rainbow | 'white'
 }
 type Props<T extends React.ElementType> = React.PropsWithChildren<TextProps<T>> &
-  Omit<React.ComponentPropsWithoutRef<T>, 'as' | 'color'>
+  Omit<React.ComponentPropsWithoutRef<T>, keyof TextProps<T>>
 
 /**
  * <Text as="div">Hello, world!</Text>
