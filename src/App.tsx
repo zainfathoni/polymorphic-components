@@ -17,6 +17,9 @@ function App() {
         <Text as="h1">Hello, world!</Text>
         <Text as="p">Hello, world!</Text>
         <Text as="div">Hello, world!</Text>
+        <Text as="a" href="/">
+          Go home
+        </Text>
       </header>
     </div>
   )

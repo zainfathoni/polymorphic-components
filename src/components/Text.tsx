@@ -1,22 +1,23 @@
 import React from 'react'
 
-type TextProps<T> = {
+type TextProps<T extends React.ElementType> = {
   children: React.ReactNode
   as?: T
-}
+} & React.ComponentPropsWithoutRef<T>
 
 /**
  * <Text as="div">Hello, world!</Text>
  *
  * - ~as can receive invalid element~
- * - No attributes support
- * - Wrong attributes can be passed for a valid element
+ * - ~No attributes support~
+ * - ~Wrong attributes can be passed for a valid element~
  *
- * Why is this bad?
- * - Terrible DX
- * - Bugs can (and will) creep in
+ * Even more requirements
+ * - The component should be reusable with its own props
+ * - Create a reusable
+ * - ...
  */
-export const Text = <T extends React.ElementType>({ as, children }: TextProps<T>) => {
+export const Text = <T extends React.ElementType>({ as, children, ...props }: TextProps<T>) => {
   const Component = as || 'span'
-  return <Component>{children}</Component>
+  return <Component {...props}>{children}</Component>
 }
