@@ -39,7 +39,7 @@ type TextComponent = <T extends React.ElementType>(props: TextProps<T>) => React
  * Even more requirements
  * - ~The component should be reusable with its own props~
  * - ~Create a reusable utility for Polymorphic types~
- * - The component should support refs
+ * - ~The component should support refs~
  */
 export const Text: TextComponent = React.forwardRef(
   <T extends React.ElementType = 'span'>({ as, color, children, ...props }: TextProps<T>, ref?: PolymorphicRef<T>) => {
