@@ -5,11 +5,6 @@ type Rainbow = 'red' | 'orange' | 'yellow' | 'green' | 'blue' | 'indigo' | 'viol
 type AsProps<T> = {
   as?: T
 }
-type TextProps<T extends React.ElementType> = AsProps<T> & {
-  color?: Rainbow | 'white'
-}
-type Props<T extends React.ElementType> = React.PropsWithChildren<TextProps<T>> &
-  Omit<React.ComponentPropsWithoutRef<T>, keyof TextProps<T>>
 
 type PropsToOmit<T extends React.ElementType, ComponentProps> = keyof AsProps<T> & ComponentProps
 type PolymorphicComponentProps<T extends React.ElementType, ComponentProps> = React.PropsWithChildren<
