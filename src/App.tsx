@@ -27,7 +27,7 @@ function App() {
         </Text>
         {/* this is prevented now
         <Text href="/">Span with href</Text> */}
-        <Text as="p" ref={ref}>
+        <Text as="button" ref={ref}>
           hello
         </Text>
       </header>
