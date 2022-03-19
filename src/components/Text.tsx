@@ -21,7 +21,7 @@ type PolymorphicComponentProps<T extends React.ElementType, ComponentProps> = Re
  *
  * Even more requirements
  * - ~The component should be reusable with its own props~
- * - Create a reusable utility for Polymorphic types
+ * - ~Create a reusable utility for Polymorphic types~
  * - The component should support refs
  */
 export const Text = <T extends React.ElementType = 'span'>({
