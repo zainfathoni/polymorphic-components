@@ -1,6 +1,11 @@
 import React from 'react'
 
-export const Text = <T extends React.ElementType>({ as, children }: { children: React.ReactNode; as?: T }) => {
+type TextProps<T> = {
+  children: React.ReactNode
+  as?: T
+}
+
+export const Text = <T extends React.ElementType>({ as, children }: TextProps<T>) => {
   const Component = as || 'span'
   return <Component>{children}</Component>
 }
