@@ -15,6 +15,9 @@ function App() {
           Learn React
         </a>
         <Text as="h1">Hello, world!</Text>
+        <Text as="h2" color="orange">
+          Hello, world!
+        </Text>
         <Text as="p">Hello, world!</Text>
         <Text as="div">Hello, world!</Text>
         <Text as="a" href="/">

@@ -21,7 +21,12 @@ type Props<T extends React.ElementType> = React.PropsWithChildren<TextProps<T>> 
  * - Create a reusable
  * - ...
  */
-export const Text = <T extends React.ElementType = 'span'>({ as, children, ...props }: Props<T>) => {
+export const Text = <T extends React.ElementType = 'span'>({ as, color, children, ...props }: Props<T>) => {
   const Component = as || 'span'
-  return <Component {...props}>{children}</Component>
+  const inlineStyle = color ? { style: { color } } : {}
+  return (
+    <Component {...inlineStyle} {...props}>
+      {children}
+    </Component>
+  )
 }
