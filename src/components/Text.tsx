@@ -18,6 +18,9 @@ type Props<T extends React.ElementType> = PolymorphicComponentProps<
   }
 >
 
+// TODO: refactor to Pick
+type PolymorphicRef<T extends React.ElementType> = React.ComponentPropsWithRef<T>['ref']
+
 /**
  * <Text as="div">Hello, world!</Text>
  *
@@ -30,12 +33,14 @@ type Props<T extends React.ElementType> = PolymorphicComponentProps<
  * - ~Create a reusable utility for Polymorphic types~
  * - The component should support refs
  */
-export const Text = <T extends React.ElementType = 'span'>({ as, color, children, ...props }: Props<T>) => {
-  const Component = as || 'span'
-  const inlineStyle = color ? { style: { color } } : {}
-  return (
-    <Component {...inlineStyle} {...props}>
-      {children}
-    </Component>
-  )
-}
+export const Text = React.forwardRef(
+  <T extends React.ElementType = 'span'>({ as, color, children, ...props }: Props<T>, ref: PolymorphicRef<T>) => {
+    const Component = as || 'span'
+    const inlineStyle = color ? { style: { color } } : {}
+    return (
+      <Component {...inlineStyle} ref={ref} {...props}>
+        {children}
+      </Component>
+    )
+  }
+)

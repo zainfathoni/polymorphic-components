@@ -4,6 +4,8 @@ import './App.css'
 import { Text } from './components'
 
 function App() {
+  const ref = React.useRef<HTMLButtonElement | null>(null)
+
   return (
     <div className="App">
       <header className="App-header">
@@ -25,6 +27,9 @@ function App() {
         </Text>
         {/* this is prevented now
         <Text href="/">Span with href</Text> */}
+        <Text as="p" ref={ref}>
+          hello
+        </Text>
       </header>
     </div>
   )
