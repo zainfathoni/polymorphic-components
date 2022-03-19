@@ -17,9 +17,9 @@ type Props<T extends React.ElementType> = React.PropsWithChildren<TextProps<T>> 
  * - ~Wrong attributes can be passed for a valid element~
  *
  * Even more requirements
- * - The component should be reusable with its own props
- * - Create a reusable
- * - ...
+ * - ~The component should be reusable with its own props~
+ * - Create a reusable utility for Polymorphic types
+ * - The component should support refs
  */
 export const Text = <T extends React.ElementType = 'span'>({ as, color, children, ...props }: Props<T>) => {
   const Component = as || 'span'
