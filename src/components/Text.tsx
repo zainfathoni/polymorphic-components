@@ -1,9 +1,15 @@
 import React from 'react'
 
+type Rainbow = 'red' | 'orange' | 'yellow' | 'green' | 'blue' | 'indigo' | 'violet'
+
 type TextProps<T extends React.ElementType> = {
-  children: React.ReactNode
   as?: T
-} & React.ComponentPropsWithoutRef<T>
+  color?: Rainbow | 'white'
+}
+type Props<T extends React.ElementType> = {
+  children: React.ReactNode
+} & TextProps<T> &
+  React.ComponentPropsWithoutRef<T>
 
 /**
  * <Text as="div">Hello, world!</Text>
@@ -17,7 +23,7 @@ type TextProps<T extends React.ElementType> = {
  * - Create a reusable
  * - ...
  */
-export const Text = <T extends React.ElementType = 'span'>({ as, children, ...props }: TextProps<T>) => {
+export const Text = <T extends React.ElementType = 'span'>({ as, children, ...props }: Props<T>) => {
   const Component = as || 'span'
   return <Component {...props}>{children}</Component>
 }
