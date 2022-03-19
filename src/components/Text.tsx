@@ -6,10 +6,7 @@ type TextProps<T extends React.ElementType> = {
   as?: T
   color?: Rainbow | 'white'
 }
-type Props<T extends React.ElementType> = {
-  children: React.ReactNode
-} & TextProps<T> &
-  React.ComponentPropsWithoutRef<T>
+type Props<T extends React.ElementType> = React.PropsWithChildren<TextProps<T>> & React.ComponentPropsWithoutRef<T>
 
 /**
  * <Text as="div">Hello, world!</Text>
