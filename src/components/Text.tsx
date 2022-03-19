@@ -2,8 +2,10 @@ import React from 'react'
 
 type Rainbow = 'red' | 'orange' | 'yellow' | 'green' | 'blue' | 'indigo' | 'violet'
 
-type TextProps<T extends React.ElementType> = {
+type AsProps<T> = {
   as?: T
+}
+type TextProps<T extends React.ElementType> = AsProps<T> & {
   color?: Rainbow | 'white'
 }
 type Props<T extends React.ElementType> = React.PropsWithChildren<TextProps<T>> &
@@ -30,3 +32,5 @@ export const Text = <T extends React.ElementType = 'span'>({ as, color, children
     </Component>
   )
 }
+
+// PolymorphicComponentProps<T, P>
